@@ -1,0 +1,150 @@
+cuda
+./ckpt/BS-p5-K40-hs1-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p5-K40-hs1-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 0.8300369804167687
+running time1: 794.2754809856415
+running time2: 382.23124504089355
+running time3: 178.7328760623932
+time to opt: 1661886092.2876956
+cuda
+./ckpt/BS-p5-K40-hs5-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p5-K40-hs5-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 0.820851280103864
+running time1: 793.2500455379486
+running time2: 380.64157605171204
+running time3: 178.9147789478302
+time to opt: 8.002060651779175
+cuda
+./ckpt/BS-p5-K40-hs10-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p5-K40-hs10-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 0.8196574499844895
+running time1: 802.8586311340332
+running time2: 386.63447427749634
+running time3: 182.0897147655487
+time to opt: 1661887733.765245
+cuda
+./ckpt/BS-p5-K40-hs1-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p5-K40-hs1-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 0.8302869347050367
+running time1: 796.9485394954681
+running time2: 384.225380897522
+running time3: 179.50956892967224
+time to opt: 1661888574.9436846
+cuda
+./ckpt/BS-p5-K40-hs5-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p5-K40-hs5-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 0.8220298993008216
+running time1: 801.7418332099915
+running time2: 385.27545857429504
+running time3: 181.76276803016663
+time to opt: 1661889409.440728
+cuda
+./ckpt/BS-p5-K40-hs10-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p5-K40-hs10-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 0.8200814470915538
+running time1: 807.0805985927582
+running time2: 387.9836413860321
+running time3: 182.36197185516357
+time to opt: 1661890248.535513
+cuda
+FullN-BS-p5-K40-hs1-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+best score... 0.8295916210659935
+running time1: 1265.4963867664337
+running time2: 832.7245173454285
+running time3: 593.6964585781097
+time to opt: 0
+cuda
+FullN-BS-p5-K40-hs5-bs128-theopoula-seed111-lr0.1-eps0.01-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+best score... 0.8199160751479361
+running time1: 1271.8378312587738
+running time2: 836.2426700592041
+running time3: 596.7763917446136
+time to opt: 0
+cuda
+FullN-BS-p5-K40-hs10-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+best score... 0.8187395078141976
+running time1: 1266.301373243332
+running time2: 833.2532279491425
+running time3: 594.6387755870819
+time to opt: 0
+cuda
+./ckpt/BS-p50-K40-hs1-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p50-K40-hs1-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 2.0470426533838064
+running time1: 874.606817483902
+running time2: 406.39519810676575
+running time3: 180.21172046661377
+time to opt: 1661895066.5181456
+cuda
+./ckpt/BS-p50-K40-hs5-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p50-K40-hs5-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 2.042812832176228
+running time1: 888.636067867279
+running time2: 414.0226423740387
+running time3: 184.86078357696533
+time to opt: 1661896158.9241114
+cuda
+./ckpt/BS-p50-K40-hs20-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p50-K40-hs20-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 2.041257166801511
+running time1: 889.8739678859711
+running time2: 417.2555546760559
+running time3: 186.35968255996704
+time to opt: 1661897284.9567068
+cuda
+./ckpt/BS-p50-K40-hs1-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p50-K40-hs1-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 2.04701504408551
+running time1: 882.3044874668121
+running time2: 409.43821001052856
+running time3: 181.0574553012848
+time to opt: 1661898436.229062
+cuda
+./ckpt/BS-p50-K40-hs5-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p50-K40-hs5-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 2.043209003975324
+running time1: 886.6048243045807
+running time2: 412.519624710083
+running time3: 185.30300378799438
+time to opt: 1661899557.2302065
+cuda
+./ckpt/BS-p50-K40-hs20-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+========transferring===============
+TransfL-BS-p50-K40-hs20-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100r0-eta0.0
+best score... 2.041792885421792
+running time1: 888.7334969043732
+running time2: 416.51027369499207
+running time3: 185.90623784065247
+time to opt: 1661900695.506988
+cuda
+FullN-BS-p50-K40-hs1-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+best score... 2.0444906614625546
+running time1: 1356.9962973594666
+running time2: 865.3291392326355
+running time3: 599.4049093723297
+time to opt: 0
+cuda
+FullN-BS-p50-K40-hs5-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+best score... 2.0371495710919274
+running time1: 1359.309452533722
+running time2: 859.3649060726166
+running time3: 594.1278948783875
+time to opt: 0
+cuda
+FullN-BS-p50-K40-hs20-bs128-theopoula-seed111-lr0.05-eps0.0001-wdecay0-beta1.0e+12-schedulerstep-steplr50-lrgamma0.1-epochs100
+best score... 2.0358434689929115
+running time1: 1382.104995250702
+running time2: 877.4530141353607
+running time3: 606.5003209114075
+time to opt: 0
