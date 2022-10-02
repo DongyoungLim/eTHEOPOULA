@@ -16,11 +16,20 @@ Please refer to the folder name portfolio_selection. Execute run_BS and run_AR f
 
 
 
-## Transfer learning
+### Transfer learning
 Please refer to the folder name, portfolio_selection_transferlearning. Excute file_name.sh files for training models. The numerical results are summarized in the outputs folder. 
 
-## Insurance claim prediction
+### Insurance claim prediction
 Please refer to the folder name nonlinear regression. Excute main.py file for training models. The numerical results are summarized in plot_Results.ipynb.
+
+## Data
+For the multi-period portfolio optimization, data is automatically generated.
+If you are interested in the insurance claims data, please email me, dlim@unist.ac.kr.
+
+
+
+
+
 
 
 
