@@ -1,4 +1,4 @@
-# e-THEO POULA with discontinuous updating
+#  Langevin dynamics based algorithm e-TH$\varepsilon$O POULA for stochastic optimization problems with discontinuous stochastic gradient
 
 This repository is the official implementation of "e-THEO POULA with discontinuous updating". 
 
