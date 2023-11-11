@@ -38,18 +38,15 @@ class THEOPOULA(Optimizer):
                     state['step'] = 0
 
                 eta, beta, lr, eps = group['eta'], group['beta'], group['lr'], group['eps']
-
                 g_abs = torch.abs(grad)
+                numer = g_abs.clone().detach()
+                denom = g_abs.clone().detach()
 
                 #numer = grad * ( 1 + math.sqrt(lr)/(eps + g_abs))
                 #denom = 1 + math.sqrt(lr) * g_abs
 
-                numer = torch.mul(grad, 1 + torch.mul(torch.reciprocal(torch.add(g_abs, eps)), math.sqrt(lr)))
-                denom = torch.add(torch.mul(g_abs, math.sqrt(lr)), 1)
-
-
-                #numer = grad * ((eps + g_abs) + math.sqrt(lr))
-                #denom = (1 + math.sqrt(lr) * g_abs) * (eps + g_abs)
+                numer.add_(eps).reciprocal_().mul_(math.sqrt(lr)).add_(1).mul_(grad)
+                denom.mul_(math.sqrt(lr)).add_(1)
 
                 noise = math.sqrt(2 * lr / beta) * torch.randn(size=p.size(), device=device)
 

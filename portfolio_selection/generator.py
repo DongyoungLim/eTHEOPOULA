@@ -2,9 +2,10 @@ import numpy as np
 
 np.random.seed(111)
 
-def generate_path(asset_model, p, n, time_step, r_f):
+def generate_path(asset_model, p, n, time_step, R_f):
     if asset_model == 'BS':
-        R_f = np.exp(r_f * time_step)
+        r_f = 0.03
+
         if p == 5:
             lamb = 0.1 * np.ones(p)
             lamb[2:] = 0.2
@@ -22,36 +23,13 @@ def generate_path(asset_model, p, n, time_step, r_f):
             np.fill_diagonal(sig, 0.15)
 
         K = int(1 / time_step)
-        rs = np.zeros([n, K, p])
 
-        randomness = np.random.multivariate_normal(np.zeros(p), np.identity(p), size=(n, K))
+        randomness = np.random.randn(n, K, p)
+
         tmp1 = (r_f + np.matmul(sig, lamb) - 0.5 * np.diag(np.matmul(sig, np.transpose(sig)))) * time_step
-        rs[:, :, :] = tmp1
-
         tmp2 = np.sqrt(time_step) * np.matmul(randomness, sig)
-        rs = np.exp(rs + tmp2) - R_f
+        rs = np.exp(tmp1 + tmp2) - R_f
 
-        # for k in range(K):
-        #     randomness = np.random.multivariate_normal(np.zeros(p), np.identity(p), size=n)
-        #
-        #     tmp1 = (r_f + np.matmul(sig, lamb) - 0.5 * np.diag(np.matmul(sig, np.transpose(sig)))) * time_step
-        #     tmp1 = tmp1.reshape(-1, 1)
-        #     tmp1 = np.repeat(tmp1, n, axis=1)
-        #     tmp2 = np.sqrt(time_step) * np.matmul(sig, np.transpose(randomness))
-        #
-        #     r_k = np.exp(tmp1 + tmp2) - R_f
-        #     rs[:, k, :] = np.transpose(r_k)
-
-
-        # for m in range(n):
-        #     randomness = np.random.multivariate_normal(np.zeros(p), np.identity(p), size=K)
-        #     tmp1 = (r_f + np.matmul(sig, lamb) - 0.5 * np.diag(np.matmul(sig, np.transpose(sig)))) * time_step
-        #     tmp1 = tmp1.reshape(-1, 1)
-        #     tmp1 = np.repeat(tmp1, K, axis=1)
-        #     tmp2 = np.sqrt(time_step) * np.matmul(sig, np.transpose(randomness))
-        #
-        #     r_k = np.exp(tmp1 + tmp2) - R_f
-        #     rs[m, :, :] = np.transpose(r_k)
 
     elif asset_model == 'AR':
         name = 'case1'
