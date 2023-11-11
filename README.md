@@ -1,6 +1,8 @@
-# e-THEO POULA with discontinuous updating
+#  Langevin dynamics based algorithm e-THEO POULA for stochastic optimization problems with discontinuous stochastic gradient
 
-This repository is the official implementation of "e-THEO POULA with discontinuous updating". 
+This repository is the official implementation of "Langevin dynamics based algorithm e-THEO POULA for stochastic optimization problems with discontinuous stochastic gradient". 
+
+Authors: Dong-Young Lim, Ariel Neufeld, Sotirios Sabanis, and Ying Zhang
 
 Abstract: In this paper, we focus on optimization problems with discontinuous stochastic gradient. We solve the aforementioned problems by extending TH$\varepsilon$O POULA, which is recently developed in \citeauthor{lim2021polygonal} (\citeyear{lim2021polygonal}) based on the advances of polygonal Euler approximations. We demonstrate both theoretically and numerically the applicability of the extended TH$\varepsilon$O POULA algorithm. In particular, under the conditions that the stochastic gradient is locally Lipschitz in average and satisfies a certain convexity at infinity condition, we establish non-asymptotic error bounds for the extended TH$\varepsilon$O POULA in Wasserstein distances, and provide a non-asymptotic estimate for the expected excess risk. Three key applications in finance are provided, namely, the multi-period portfolio optimization, transfer learning in the multi-period portfolio optimization, and the insurance claim prediction, which involve neural networks with (Leaky)-ReLU activation functions. Numerical experiments conducted using real-world datasets illustrate the superior empirical performance of the extended TH$\varepsilon$O POULA compared to SGLD, ADAM, and AMSGrad in terms of model's accuracy.
 
@@ -16,10 +18,10 @@ Please refer to the folder name portfolio_selection. Execute run_BS and run_AR f
 
 
 
-### Transfer learning
+### Transfer learning (Section 3.2)
 Please refer to the folder name, portfolio_selection_transferlearning. Excute file_name.sh files for training models. The numerical results are summarized in the outputs folder. 
 
-### Insurance claim prediction
+### Insurance claim prediction (Section 3.3)
 Please refer to the folder name nonlinear regression. Excute main.py file for training models. The numerical results are summarized in plot_Results.ipynb.
 
 ## Data
