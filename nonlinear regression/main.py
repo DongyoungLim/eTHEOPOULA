@@ -9,10 +9,11 @@ import pandas as pd
 from utils import get_nll_S
 from models import S_net
 import matplotlib.pyplot as plt
-from optimizers import *
+from optimizers import ADAM, SGLD, TUSLA, THEOPOULA
 from utils import FS_Dataset
 from sklearn.model_selection import train_test_split
 from torch.utils.tensorboard import SummaryWriter
+import time
 
 pd.set_option('display.max_columns', 100)
 pd.set_option('display.max_rows', 100)
@@ -22,7 +23,7 @@ parser = argparse.ArgumentParser('Nonlinear gamma regression')
 parser.add_argument('--s_dist', default='Gamma', type=str, help='severity distribution')
 parser.add_argument('--seed', default=111, type=int)
 parser.add_argument('--batch_size', default=128, type=int, help='batch_size')
-parser.add_argument('--epochs', default=50, type=int, help='# of epochs')
+parser.add_argument('--epochs', default=100, type=int, help='# of epochs')
 parser.add_argument('--lr', default=0.001, type=float)
 parser.add_argument('--act_fn', default='leaky_relu', type=str)
 parser.add_argument('--hidden_size', default=50, type=int, help='number of neurons')
@@ -67,17 +68,19 @@ num_batch = np.ceil(num_data / args.batch_size)
 
 def get_ckpt_name(seed=111, optimizer='sgld', lr=0.1, momentum=0.9,
                   beta1=0.9, beta2=0.999, eps=1e-8, weight_decay=5e-4,
-                  beta=1e12):
+                  beta=1e12, r=0.5, epochs=50):
     name = {
-        'sgld': 'seed{}-lr{}-wdecay{}'.format(seed, lr, momentum, weight_decay),
-        'adam': 'seed{}-lr{}-betas{}-{}-wdecay{}-eps{}'.format(seed, lr, beta1, beta2,weight_decay, eps),
-        'amsgrad': 'seed{}-lr{}-betas{}-{}-wdecay{}-eps{}'.format(seed, lr, beta1, beta2, weight_decay, eps),
-        'theopoula': 'seed{}-lr{}-eps{}-wdecay{}'.format(seed, lr, eps, weight_decay) + '-beta %.1e'%(beta),
+        'sgld': 'seed{}-lr{}-wdecay{}'.format(seed, lr,weight_decay),
+        'adam': 'seed{}-lr{}-betas{}-{}-wdecay{}'.format(seed, lr, beta1, beta2,weight_decay),
+        'amsgrad': 'seed{}-lr{}-betas{}-{}-wdecay{}'.format(seed, lr, beta1, beta2, weight_decay),
+        'theopoula': 'seed{}-lr{}-eps{}-wdecay{}-beta{:.1e}'.format(seed, lr, eps, weight_decay, beta),
+        'tusla': 'seed{}-lr{}-r{}-wdecay{}-beta{:.1e}'.format(seed, lr, r, weight_decay, beta),
     }[optimizer]
-    return '{}-{}'.format(optimizer, name)
+    return '{}-{}-epoch{}'.format(optimizer, name, epochs)
 save = get_ckpt_name(seed=args.seed, optimizer=args.optimizer_name, lr=args.lr, eps=args.eps,
-                          weight_decay=args.weight_decay, lr_gamma=args.lr_gamma, eps_gamma=args.eps_gamma, beta=args.beta)
+                          weight_decay=args.weight_decay, beta=args.beta, epochs=args.epochs)
 print(save)
+start = time.time()
 print('==> Start severity model..')
 
 ## Preparing data and dataloader
@@ -121,11 +124,14 @@ print('==> Set optimizer.. use {%s}'%args.optimizer_name)
 optimizer = { 'sgld': SGLD(S_model.parameters(), lr=args.lr, beta=args.beta, weight_decay=args.weight_decay),
               'adam': optim.Adam(S_model.parameters(), lr=args.lr, weight_decay=args.weight_decay),
               'amsgrad': optim.Adam(S_model.parameters(), lr=args.lr, amsgrad=True, weight_decay=args.weight_decay),
-              'theopoula': THEOPOULA(S_model.parameters(), lr=args.lr, eta=args.eta, beta=args.beta, eps=args.eps, weight_decay=args.weight_decay)
+              'theopoula': THEOPOULA(S_model.parameters(), lr=args.lr, eta=args.eta, beta=args.beta, eps=args.eps, weight_decay=args.weight_decay),
+              'tusla': TUSLA(S_model.parameters(), lr=args.lr, beta=args.beta, weight_decay=args.weight_decay)
 }[args.optimizer_name]
 
 history = {'train_nll': [],
            'test_nll': [],
+           'running_time': [],
+           'best_epoch': 0,
            }
 
 ## Training - severity model
@@ -212,17 +218,20 @@ for epoch in range(1, args.epochs+1):
     S_train(epoch, S_model)
     S_test(epoch, S_model)
 
-plt.figure(1)
-plt.title('train_nll')
-plt.plot(range(1, args.epochs+1), hist_train_nll, label='train')
-plt.xlabel('epochs')
-plt.ylabel('nll')
-plt.figure(2)
-plt.title('test_nll')
-plt.plot(range(1, args.epochs+1), hist_test_nll, label='test')
-plt.xlabel('epochs')
-plt.ylabel('nll')
-plt.legend()
+# plt.figure(1)
+# plt.title('train_nll')
+# plt.plot(range(1, args.epochs+1), hist_train_nll, label='train')
+# plt.xlabel('epochs')
+# plt.ylabel('nll')
+# plt.figure(2)
+# plt.title('test_nll')
+# plt.plot(range(1, args.epochs+1), hist_test_nll, label='test')
+# plt.xlabel('epochs')
+# plt.ylabel('nll')
+# plt.legend()
+
+history['running_time'] = time.time()-start
+history['best_epoch'] = state['epoch']
 
 #save result
 if not os.path.isdir(args.log_dir):
@@ -235,5 +244,5 @@ if not os.path.isdir(args.ckpt_dir):
 torch.save(state, os.path.join(args.ckpt_dir, save))
 
 
-plt.show()
+# plt.show()
 
